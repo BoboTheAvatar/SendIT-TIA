@@ -1,0 +1,74 @@
+/*css document */
+
+
+.buttonform{
+    color:#ffffff;
+	background-color: #0f0f0f;
+	border-radius: 5px;
+	height: 40px;
+	transition: 1s;
+}
+.buttonform:hover{
+    color:#ffffff;
+	background-color: #299a0b;
+	border-radius: 5px;
+	height: 40px;
+	transition: 1s; 
+}
+
+
+.butt{
+	width:100%;
+	background-color:green;
+	color:#ffffff;
+	border-radius: 10px;
+}
+.buttview{
+	width:100%;
+	background-color:green;
+	color:#ffffff;
+}
+.buttupdate{
+	width:100%;
+	background-color:yellow;
+	color:#000000;
+}
+.buttcancel{
+	width:100%;
+	background-color:black;
+	color:#ffffff;
+}
+.buttcancel:hover{
+	width:100%;
+	background-color:red;
+	color:#ffffff;
+	border-radius: 10px;
+	transition:0.3s;
+}
+.buttcancelconfirm{
+	width:100%;
+	background-color:red;
+	color:#ffffff;
+	border-radius: 10px;
+}
+.buttview:hover{
+	width:100%;
+	background-color:red;
+	color:#ffffff;
+	transition:0.3s;
+	border-radius: 10px;
+}
+.butt:hover{
+	width:100%;
+	background-color:red;
+	color:#ffffff;
+	border-radius: 10px;
+	transition:0.3s;
+}
+.buttupdate:hover{
+	width:100%;
+	background-color:red;
+	color:#ffffff;
+	border-radius: 10px;
+	transition:0.3s;
+}

@@ -1,0 +1,150 @@
+/*css document */
+
+* {
+    box-sizing: border-box;
+}
+}
+[class*="col-"] {
+    float: left;
+    padding: 15px; 
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+.imagelogo{
+    height: 33px;
+	width: 110px;
+}
+.header{
+	background-color: #ffffff;
+	top: 0px;
+}
+.headerleft{
+    float: left;
+}
+.headerright{
+    float: right;
+}
+
+.imagewrapper{
+    background-image: url("../Images/world1.png");
+	background-color: #19547b;
+	opacity: 1;
+	height:500px;
+}
+
+.smallscreenintro{
+    background-image: url("../Images/world1.png");
+	background-color: #19547b;
+	opacity: 1;
+	height:200px;
+	display:none;
+}
+.wrapperleft{
+    //opacity: 0.8;
+	//background-color: #299a0b;
+	color:#ffffff;
+	font-size: 40px;
+	font-weight:bold;
+	font-style: italic;
+	text-align:center;
+}
+.wrapperright{
+	//background-color: #299a0b;
+	color:#ffffff;
+	font-size: 30px;
+	font-weight:bold;
+	//font-style: italic;
+	text-align:center;
+	//opacity: 0.8;
+}
+
+.socialmediaicon{
+   height: 30px;
+   width: 30px;
+   float: right;
+}
+.socialmediaicon:hover{
+   height: 35px;
+   width: 35px;
+   transition:1s;
+}
+.signupredir{
+	background-color: #19547b;
+	color:#ffffff;
+	border-radius:10px;
+	text-align:center;
+	transition: 1s;
+}
+.signupredir:hover{
+	background-color: #ffffff;
+	color:#ff0000;
+	transition: 1s;
+}
+
+.regform{
+    background-color: #19547b;
+	color: #ffffff;	
+	opacity: 0.7;
+	font-size: 18px;
+	text-align:left;
+}
+.regform div{
+    margin-left: 4%;
+
+}
+.inputform{
+    color:#000000;
+	background-color: #ffffff;
+	border-radius: 5px;
+	height: 30px;
+}
+
+.buttonform{
+    color:#ffffff;
+	background-color: #0f0f0f;
+	border-radius: 5px;
+	height: 40px;
+	transition: 1s;
+}
+.buttonform:hover{
+    color:#ffffff;
+	background-color: #299a0b;
+	border-radius: 5px;
+	height: 40px;
+	transition: 1s;
+}
+
+
+@media only screen and (max-width: 500px) {
+    .imagewrapper{
+        background-image: url("../Images/world1.png");
+	    background-color: #19547b;
+	    opacity: 1;
+	    height:800px;
+    }
+	.smallscreenintro{
+        background-image: url("../Images/world1.png");
+	    background-color: #19547b;
+	    opacity: 1;
+	    height:200px;
+	    display:block;
+    }
+}
+.formheader{
+     background-color:#299a0b;
+	 color:#ffffff;
+	 height: 50px;
+	 border-radius:10px;
+}
+

@@ -1,0 +1,11 @@
+/*css document */
+
+.resulttable{
+	width: 90%;
+	text-align: center;
+	border: 1px solid black;
+}
+.resulttableth{
+	background-color: #19547b;
+	color:#ffffff;
+}

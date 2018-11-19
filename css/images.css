@@ -1,0 +1,29 @@
+/*css document */
+
+
+.imagelogo{
+    height: 33px; 
+	width: 110px;
+}
+
+.socialmediaicon{
+	height:30px;
+    float: right;
+}
+.socialmediaicon:hover{
+   height: 35px;
+   width: 35px;
+   transition:1s;
+}
+.imagebanner{
+	height:10px;
+	//background-image: url("../Images/world1.png");
+	background-color: #19547b;
+	opacity: 1;
+}
+
+.userphoto{
+	width:200px;
+}
+
+

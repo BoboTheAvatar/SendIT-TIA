@@ -1,0 +1,230 @@
+/*css document */
+
+* {
+    box-sizing: border-box;
+}
+}
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;} 
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+.imagelogo{
+    height: 33px;
+	width: 110px;
+}
+.header{
+	background-color: #ffffff;
+	top: 0px;
+}
+.headerleft{
+    float: left;
+}
+.headerright{
+    float: right;
+}
+
+.socialmediaicon{
+   height: 30px;
+   width: 30px;
+   float: right;
+}
+.socialmediaicon:hover{
+   height: 35px;
+   width: 35px;
+   transition:1s;
+}
+.imagebanner{
+	height:10px;
+	//background-image: url("../Images/world1.png");
+	background-color: #19547b;
+	opacity: 1;
+}
+.menubanner{
+	height:50px;
+	//background-image: url("../Images/world1.png");
+	background-color: #19547b;
+	color:#ffffff;
+	opacity: 1;
+}
+.menuitem{
+	width: 100px;
+}
+.menuitem:hover{
+	background-color:#ffffff;
+	color: #19547b;
+}
+
+a{
+	text-decoration:inherit;
+	color: inherit;
+}
+.userphoto{
+	width:200px;
+}
+
+.leftdiv{
+	width:50%;
+	float:left;
+	text-align:center;
+}
+.rightdiv{
+	width:50%;
+	float:right;
+	text-align:center;
+}
+
+.leftdiv1{
+	width:50%;
+	float:left;
+	text-align:center;
+}
+.rightdiv1{
+	width:50%;
+	float:right;
+	text-align:center;
+}
+.leftcentclass{
+	text-align:left;
+}
+
+.inputform1{
+    color:#000000;
+	background-color: #ffffff;
+	border-radius: 5px;
+	height: 30px;
+	width:90%;
+}
+
+.buttonform{
+    color:#ffffff;
+	background-color: #0f0f0f;
+	border-radius: 5px;
+	height: 40px;
+	transition: 1s;
+}
+.buttonform:hover{
+    color:#ffffff;
+	background-color: #299a0b;
+	border-radius: 5px;
+	height: 40px;
+	transition: 1s;
+}
+
+.resulttable{
+	width: 90%;
+	text-align: center;
+	border: 1px solid black;
+}
+.resulttableth{
+	background-color: #19547b;
+	color:#ffffff;
+}
+.butt{
+	width:100%;
+	background-color:green;
+	color:#ffffff;
+	border-radius: 10px;
+}
+.buttview{
+	width:100%;
+	background-color:green;
+	color:#ffffff;
+}
+.buttupdate{
+	width:100%;
+	background-color:yellow;
+	color:#000000;
+}
+.buttcancel{
+	width:100%;
+	background-color:black;
+	color:#ffffff;
+}
+.buttcancel:hover{
+	width:100%;
+	background-color:red;
+	color:#ffffff;
+	border-radius: 10px;
+	transition:0.3s;
+}
+.buttcancelconfirm{
+	width:100%;
+	background-color:red;
+	color:#ffffff;
+	border-radius: 10px;
+}
+.buttview:hover{
+	width:100%;
+	background-color:red;
+	color:#ffffff;
+	transition:0.3s;
+	border-radius: 10px;
+}
+.butt:hover{
+	width:100%;
+	background-color:red;
+	color:#ffffff;
+	border-radius: 10px;
+	transition:0.3s;
+}
+.buttupdate:hover{
+	width:100%;
+	background-color:red;
+	color:#ffffff;
+	border-radius: 10px;
+	transition:0.3s;
+}
+
+#map {
+		height: 500px;;
+      }
+@media only screen and (max-width: 1000px) {
+
+.leftdiv1{
+	width:100%;
+	float:left;
+	text-align:center;
+}
+.rightdiv1{
+	width:100%;
+	float:right;
+	text-align:center;	
+	
+}
+
+
+@media only screen and (max-width: 500px) {
+    .menuitem{
+	  width: 25%;
+	  font-size: 14px;
+    }
+	
+	.menubanner{
+	height:50px;
+	//background-image: url("../Images/world1.png");
+	background-color: #19547b;
+	color:#ffffff;
+	width:100%;
+    }
+	.leftdiv{
+	width:100%;
+	float:left;
+    }
+    .rightdiv{
+	width:100%;
+	float:right;
+    }
+}
