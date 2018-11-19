@@ -1,0 +1,129 @@
+/*css document */
+
+* {
+    box-sizing: border-box;
+}
+}
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;} 
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+
+.header{
+	background-color: #ffffff;
+	top: 0px;
+}
+.headerleft{
+    float: left;
+}
+.headerright{
+    float: right;
+}
+
+.menubanner{
+	height:50px;
+	//background-image: url("../Images/world1.png");
+	background-color: #19547b;
+	color:#ffffff;
+	opacity: 1;
+}
+.menuitem{
+	width: 100px;
+}
+.menuitem:hover{
+	background-color:#ffffff;
+	color: #19547b;
+}
+
+a{
+	text-decoration:inherit;
+	color: inherit;
+}
+
+.leftdiv{
+	width:50%;
+	float:left;
+	text-align:center;
+}
+.rightdiv{
+	width:50%;
+	float:right;
+	text-align:center;
+}
+
+.leftdiv1{
+	width:50%;
+	float:left;
+	text-align:center;
+}
+.rightdiv1{
+	width:50%;
+	float:right;
+	text-align:center;
+}
+.leftcentclass{
+	text-align:left;
+}
+
+#map {
+		height: 500px;;
+      }
+@media only screen and (max-width: 1000px) {
+
+.leftdiv1{
+	width:100%;
+	float:left;
+	text-align:center;
+}
+.rightdiv1{
+	width:100%;
+	float:right;
+	text-align:center;	
+	
+}
+
+.imagewrapper{
+        background-image: url("Images/world1.png");
+	    background-color: #19547b;
+	    opacity: 1;
+	    height:600px;
+    }
+
+}
+
+
+@media only screen and (max-width: 500px) {
+    .menuitem{
+	  width: 25%;
+	  font-size: 14px;
+    }
+	
+	.menubanner{
+	height:50px;
+	//background-image: url("../Images/world1.png");
+	background-color: #19547b;
+	color:#ffffff;
+	width:100%;
+    }
+	.leftdiv{
+	width:100%;
+	float:left;
+    }
+    .rightdiv{
+	width:100%;
+	float:right;
+    }
+}
