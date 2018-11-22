@@ -1,11 +1,17 @@
-
 import express from 'express';
 import fs from 'fs';
 //const express = require("express");
+import  bodyParser from 'body-parser';
 import {rootin} from './server/routes/routing.js';
 
 const app=express();
 
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 
 app.use('/api/v1', rootin());
 
@@ -24,6 +30,8 @@ app.use('/', (req,res)=>{
     }
     });
 });
+
+
 
 
 

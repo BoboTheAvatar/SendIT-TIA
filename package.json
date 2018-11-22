@@ -10,6 +10,7 @@
     "test": "jasmine",
     "test1": "./node_modules/.bin/mocha",
     "test2": "nyc --reporter=html --reporter=text jasmine",
+    "test3": "mocha-webpack test/api.js",
     "test4": "babel-node spec/specs",
     "test5": "nyc --reporter=html --reporter=text ./node_modules/.bin/mocha",
     "test-cover": "./node_modules/.bin/istanbul cover --include-all-sources spec/specs.js && istanbul check-coverage -- --require=babel-register",
@@ -49,7 +50,6 @@
     "jasmine-node": "^1.16.2",
     "jasmine-supertest": "^1.0.0",
     "jsonwebtoken": "^8.4.0",
-    "mocha": "^5.2.0",
     "nyc": "^13.1.0",
     "pg": "^7.6.1",
     "pg-promise": "^5.9.7",
@@ -61,6 +61,9 @@
     "coveralls": "^3.0.2",
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0"
+    "eslint-plugin-import": "^2.14.0",
+    "mocha": "^5.2.0",
+    "mocha-webpack": "^1.1.0",
+    "webpack": "^4.26.0"
   }
 }
