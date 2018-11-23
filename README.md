@@ -1,5 +1,7 @@
 # SendIT-TIA
 
+[![Build Status](https://travis-ci.org/BoboTheAvatar/SendIT-TIA.svg?branch=develop3)](https://travis-ci.org/BoboTheAvatar/SendIT-TIA)  ___  [![Maintainability](https://api.codeclimate.com/v1/badges/fe3e48a3f1e3b476207c/maintainability)](https://codeclimate.com/github/BoboTheAvatar/SendIT-TIA/maintainability)
+
 API designed to interact with the SendIT web application.
 API integrating the SendIT System Product.
 
