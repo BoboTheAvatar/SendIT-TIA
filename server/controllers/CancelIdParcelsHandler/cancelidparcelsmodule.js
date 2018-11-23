@@ -1,38 +1,41 @@
 import fs from 'fs';
 import  bodyParser from 'body-parser';
+const Pool = require('pg').Pool;
 
-export function cancelidparcels(request,response){
+export class cancelidparcelsclass{
 
-              
+      constructor(){
 
-            let filedata=fs.readFileSync("./server/models/jsonfile.json", (err, data) => {
-              if (err) {
-                  return err;
-              }else{
-                  return data;
-              }
+            this.tosendflag="true";
+      };
 
+
+      cancelidparcels(request,response){
+
+            const pool = new Pool({
+                                    user: 'postgres',
+                                    host: 'localhost',
+                                    database: 'sendit',
+                                    password: '1234',
+                                    port: 7777,
+                                 });
+
+            const parcelid= request.params.Id;
+            console.log('UPDATE public."order" SET status=\'Cancelled\' WHERE id=\''+parcelid+'\''); 
+
+            pool.query('UPDATE public."order" SET status=\'Cancelled\' WHERE id=\''+parcelid+'\'', (error, results) => {
+                     if (error) {
+                            throw error
+                     }
+                     response.setHeader('Content-Type','text/plain');
+                     response.send("Updated!");  
             });
 
-            let jsondata=JSON.parse(filedata), id = request.params.Id, x="", z="";
+           
 
-            for(x in jsondata.users){
-                for(z in jsondata.users[x].Orders){
-                   console.log(jsondata.users[x].Orders[z]);
-                    if(jsondata.users[x].Orders[z].Id===id){
-                      jsondata.users[x].Orders[z].Status="Cancelled";
-                    }
-                }
-             }
+            //response.setHeader('Content-Type','text/plain');
+            //response.send("\"Done!\"");         
 
-             fs.writeFile('./server/models/jsonfile.json', JSON.stringify(jsondata), (err) => {
-                           if (err) throw err;
-                              console.log('Order Cancelled!');
-                      });
+    };
 
-
-            response.setHeader('Content-Type','text/plain');
-            response.send("\"Done!\"");         
-
-};
-
+}
