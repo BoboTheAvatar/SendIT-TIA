@@ -1,7 +1,16 @@
 import fs from 'fs';
 //import bodyParser from 'body-parser';
 
-export function addidparcels(request,response){
+export class addidparcelsclass{
+
+    constructor(){
+
+            this.tosendflag="true";
+    };
+
+
+
+    addidparcels(request,response){
 
 
               const newdata={
@@ -48,6 +57,6 @@ export function addidparcels(request,response){
             response.send("Done");         
 	   
 
-};
+   };
 
-
+}
