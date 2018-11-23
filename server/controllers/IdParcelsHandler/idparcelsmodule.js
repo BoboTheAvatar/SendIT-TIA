@@ -1,39 +1,44 @@
 //import Database from "../Database";
 import fs from 'fs';
 import  bodyParser from 'body-parser';
+const Pool = require('pg').Pool;
 
-export function getidparcels(request,response){
+export class idparcelsclass{
+
+    constructor(){
+
+            this.tosendflag="true";
+    };
+
+
+    getidparcels(request,response){
              
+            const pool = new Pool({
+                                    user: 'postgres',
+                                    host: 'localhost',
+                                    database: 'sendit',
+                                    password: '1234',
+                                    port: 7777,
+                                 });
+
+            const sender="";
+
+            if(request.params.parcelId){ sender=request.params.parcelId;};
             
-            let jsontosend={};
-
-            let filedata=fs.readFileSync("./server/models/jsonfile.json", (err, data) => {
-              if (err) {
-                  return err
-              }else{
-                  return data;
-              }
-
-            });
-
-
-            let jsondata=JSON.parse(filedata), id = request.params.parcelId, x="", y="";
-
-              for(x in jsondata.users){
-                for(y in jsondata.users[x].Orders){
-                   //console.log(jsondata.users[x].Orders[y]);
-                    if(jsondata.users[x].Orders[y].Id===id){
-                      jsontosend[y]=jsondata.users[x].Orders[y];
-                    }
-                }
-             }
-
-             //console.log(jsontosend);
+            console.log('SELECT * FROM public."order" WHERE "id"=\''+sender+'\'');
+            
+            pool.query('SELECT * FROM public."order" WHERE id=\''+sender+'\'', (error, results) => {
+                     if (error) {
+                            throw error
+                     }
+                     response.status(200).json(results.rows)
+            }); 
+            
 
 
-            response.setHeader('Content-Type','application/json');
-            response.send(jsontosend);  
+            //response.setHeader('Content-Type','application/json');
+            //response.send(jsontosend);  
 
-};
-
+    };
+}
 
