@@ -1,33 +1,34 @@
 import fs from 'fs';
 import  bodyParser from 'body-parser';
+const Pool = require('pg').Pool;
 
-export function getallparcels(request,response){
+export class allparcelsclass{
 
-		          //import fs from 'fs';
-              //import  bodyParser from 'body-parser';
-              
-              let jsontosend={};
+      constructor(){
 
-            let filedata=fs.readFileSync("./server/models/jsonfile.json", (err, data) => {
-              if (err) {
-                  return err;
-              }else{
-                  return data;
-              }
+            this.tosendflag="true";
+      };
 
+
+      getallparcels(request,response){
+
+		        const pool = new Pool({
+                                    user: 'postgres',
+                                    host: 'localhost',
+                                    database: 'sendit',
+                                    password: '1234',
+                                    port: 7777,
+                                 });
+            
+            pool.query('SELECT * FROM public."order"', (error, results) => {
+                     if (error) {
+                            throw error
+                     }
+                     response.status(200).json(results.rows)
             });
 
-
-            let jsondata=JSON.parse(filedata), x="";
-            
-              for(x in jsondata.users){
-                      jsontosend[x]=jsondata.users[x].Orders;
-             }
-
-             //console.log(jsontosend);
-
-
-            response.setHeader('Content-Type','application/json');
-            response.send(jsontosend);         
+            //response.setHeader('Content-Type','application/json');
+            //response.send(jsontosend);         
 	   
-};
+    };
+}
