@@ -1,4 +1,5 @@
-require("babel-register");
+//require("babel-register");
+require("@babel/register");
 const express= require('express');
 const expect  = require("chai").expect;
 const http=require("http");
@@ -74,6 +75,8 @@ describe("API End-point Testing", function() {
         done();
       });
     });
+
+
 
   });
 

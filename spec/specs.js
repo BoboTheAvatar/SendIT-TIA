@@ -1,4 +1,4 @@
-require("babel-register");
+require("@babel/register");
 import jasmine from 'jasmine';
 //const Jasmine= require('jasmine');
 const JasmineConsoleReporter =require('jasmine-console-reporter');
