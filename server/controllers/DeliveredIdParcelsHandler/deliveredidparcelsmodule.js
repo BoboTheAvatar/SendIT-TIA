@@ -1,38 +1,39 @@
 import fs from 'fs';
 import  bodyParser from 'body-parser';
+const Pool = require('pg').Pool;
 
-export function deliveredidparcels(request,response){
 
+export class deliveredidparcelsclass{
 
-            let filedata=fs.readFileSync("./server/models/jsonfile.json", (err, data) => {
-              if (err) {
-                  return err;
-              }else{
-                  return data;
-              }
+    constructor(){
 
+            this.tosendflag="true";
+    };
+
+    deliveredidparcels(request,response){
+
+             const pool = new Pool({
+                                    user: 'postgres',
+                                    host: 'localhost',
+                                    database: 'sendit',
+                                    password: '1234',
+                                    port: 7777,
+                                 });
+
+            const parcelid= request.params.Id;
+            console.log('UPDATE public."order" SET status=\'Delivered\' WHERE id=\''+parcelid+'\''); 
+
+            pool.query('UPDATE public."order" SET status=\'Delivered\' WHERE id=\''+parcelid+'\'', (error, results) => {
+                     if (error) {
+                            throw error
+                     }
+                     response.setHeader('Content-Type','text/plain');
+                     response.send("Updated!");  
             });
+            
 
-            let jsondata=JSON.parse(filedata), id = request.params.Id, w="", y="";
+           
+      };
 
-            for(w in jsondata.users){
-                for(y in jsondata.users[w].Orders){
-                   //console.log(jsondata.users[x].Orders[y]);
-                    if(jsondata.users[w].Orders[y].Id===id){
-                      jsondata.users[w].Orders[y].Status="Delivered";
-                    }
-                }
-             }
-
-             fs.writeFile('./server/models/jsonfile.json', JSON.stringify(jsondata), (error) => {
-                           //console.log('One record has been updated as Delivered!');
-                           if (error) throw error;
-                              console.log('One record has been updated as Delivered!');
-                      });
-
-
-            response.setHeader('Content-Type','text/plain');
-            response.send("\"Done!\"");         
-
-};
+}
 
