@@ -59,7 +59,7 @@ before_script:
     telephone character(15),
     status character(15)
     )';
-  - psql -c 'CREATE TABLE sendit."public"."user"
+  - psql -c 'CREATE TABLE public."user"
     (
     id integer,
     name character(20) COLLATE pg_catalog."default",
@@ -72,72 +72,8 @@ before_script:
     token character(50) COLLATE pg_catalog."default",
     CONSTRAINT user_pkey PRIMARY KEY (id)
     )';
-  - psql -c 'Insert into public."order"
-    (
-    "Id",
-    "Sender",
-    "Info",
-    "Pickup",
-    "PLatitude",
-    "PLongitude",
-    "Destination",
-    "DLatitude",
-    "DLongitude",
-    "Current",
-    "CLatitude",
-    "CLongitude",
-    "Weight",
-    "Price",
-    "Receiver",
-    "Telephone",
-    "Status"
-    )
-    values
-    (
-    'id2',
-    'bobo',
-    'Laptop',
-    'Kn12',
-    '0.144',
-    '0.35',
-    'KK04',
-    '0.23',
-    '0.2',
-    'KG52',
-    '0.6',
-    '0,21',
-    '7',
-    '130',
-    'Hariyali',
-    '57766543689',
-    'In Progress'
-    )';
-    
-    - psql -c 'Insert into public."user"
-    (
-    "id",
-    "name",
-    "sex",
-    "address",
-    "email",
-    "telephone",
-    "username",
-    "password",
-    "token"
-    )
-    values
-    (
-    '1',
-    'Avatar',
-    'M',
-    'Kn12',
-    'bobotheavatar@gmail.com',
-    '354678796657',
-    'avatar',
-    'avatar',
-    ''
-    )';
 
+    
 script:
   - "npm start &"
   - "npm run delayer"
