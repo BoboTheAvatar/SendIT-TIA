@@ -1,4 +1,32 @@
 // Helping Travis to start the server Slowly 10 sec
+const Pool = require('pg').Pool;
+
+const pool = new Pool({
+                user: 'postgres',
+                host: 'localhost',
+                database: 'sendit',
+                password: '1234',
+                port: 7777,
+});
+
+let psql='INSERT INTO public."order"(id,sender, info, pickup, platitude, plongitude, destination, dlatitude, dlongitude, current, clatitude, clongitude, weight, price, receiver, telephone, status) VALUES (\'1\',\'bobo\',\'laptop\',\'kk78\',\'322\',\'98\',\'326\',\'56\',\'124\',\'34\',\'54\',\'67\',\'78\',\'123\',\'Hariyali\',\'986543457\',\'In Progress\')';
+pool.query(psql, (error, results) => {
+                     if (error) {
+                            throw error
+                     }else{
+
+                     console.log("Parcel Created!");
+                    }
+            });
+psql='INSERT INTO public."user"(id,Name, Sex, Address, Email, Telephone, username, password, Token) VALUES (\'1\',\'Bobo\',\'M\',\'KK12\',\'bobotheavatar@gmail.com\',\'6754345689\',\'bobo\',\'bobo\',\'\')';
+pool.query(psql, (error, results) => {
+                     if (error) {
+                            throw error
+                     }else{
+
+                     console.log("User Created!");
+                    }
+            });
 
 console.log("Starting Delayer 10 sec");
 
