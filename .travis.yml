@@ -12,6 +12,11 @@ env:
     - PG_DATABASE=sendit
     - PG_PASSWORD=1234
     - PG_PORT=7777
+    - DB_HOST=localhost
+    - DB_USER=postgres
+    - DB_PASS=1234
+    - DB_NAME=sendit
+    - DB_PORT=7777
 
 language: node_js
 
