@@ -79,7 +79,7 @@ script:
   - "npm start &"
   - "npm run delayer"
   - "npm run test2"
+  - "npm run coverage"
   
 after_success:
   - codecov
-  - "npm run coverage"
