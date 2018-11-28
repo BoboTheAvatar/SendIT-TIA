@@ -59,7 +59,7 @@ before_script:
     telephone character(15),
     status character(15)
     )';
-  - psql -c 'CREATE TABLE sendit.public."user"
+  - psql -c 'CREATE TABLE sendit."public"."user"
     (
     id integer,
     name character(20) COLLATE pg_catalog."default",
