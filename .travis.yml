@@ -61,7 +61,7 @@ before_script:
     )';
   - psql -c 'CREATE TABLE public."user"
     (
-    id integer (5),
+    id integer,
     name character(20) COLLATE pg_catalog."default",
     sex character(2) COLLATE pg_catalog."default",
     address character(20) COLLATE pg_catalog."default",
@@ -127,7 +127,7 @@ before_script:
     )
     values
     (
-    DEFAULT,
+    '1',
     'Avatar',
     'M',
     'Kn12',
