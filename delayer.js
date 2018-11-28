@@ -21,7 +21,7 @@ pool.query(psql, (error, results) => {
                      console.log("Parcel Created!");
                     }
             });
-psql='INSERT INTO user (id,Name, Sex, Address, Email, Telephone, username, password, Token) VALUES (\'1\',\'Bobo\',\'M\',\'KK12\',\'bobotheavatar@gmail.com\',\'6754345689\',\'bobo\',\'bobo\',\'\')';
+psql='INSERT INTO "user" (id,Name, Sex, Address, Email, Telephone, username, password, Token) VALUES (\'1\',\'Bobo\',\'M\',\'KK12\',\'bobotheavatar@gmail.com\',\'6754345689\',\'bobo\',\'bobo\',\'\')';
 pool.query(psql, (error, results) => {
                      if (error) {
                             throw error
