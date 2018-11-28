@@ -73,8 +73,6 @@ before_script:
     token character(50) COLLATE pg_catalog."default",
     CONSTRAINT user_pkey PRIMARY KEY (id)
     )';
-   
-  - cp config/database.yml.travis database.yml
     
  
 
