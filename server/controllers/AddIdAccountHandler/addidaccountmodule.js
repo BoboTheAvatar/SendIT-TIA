@@ -1,7 +1,9 @@
 import fs from 'fs';
 import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 const Pool = require('pg').Pool;
 
+dotenv.config();
 
 export class addidaccountclass{
 
@@ -15,11 +17,11 @@ export class addidaccountclass{
     addidaccount(request,response){
 
             const pool = new Pool({
-                                    user: 'postgres',
-                                    host: 'localhost',
-                                    database: 'sendit',
-                                    password: '1234',
-                                    port: 7777,
+                                    user: process.env.DB_USER,
+                                    host: process.env.DB_HOST,
+                                    database: process.env.DB_NAME,
+                                    password: process.env.DB_PASS,
+                                    port: process.env.DB_PORT
                                  });
 
             const { token, name, sex, email, telephone, username, password, address } = request.body ;

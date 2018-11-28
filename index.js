@@ -6,6 +6,7 @@ import router from './server/routes/routing.js';
 //import {rootin} from './server/routes/routing.js';
 
 const app=express();
+require('dotenv').config();
 
 app.use(bodyParser.json());
 app.use(
