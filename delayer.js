@@ -26,7 +26,7 @@ pool.query(psql, (error, results) => {
 
 psql='CREATE TABLE public."user"'+
 '('+
-    'id integer NOT NULL DEFAULT nextval('"user_Id_seq"'::regclass),'+
+    'id integer,'+
     'name character(20) COLLATE pg_catalog."default",'+
     'sex character(2) COLLATE pg_catalog."default",'+
     'address character(20) COLLATE pg_catalog."default",'+
