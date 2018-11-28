@@ -12,7 +12,7 @@ const pool = new Pool({
                 port: process.env.DB_PORT
 });
 
-let psql='INSERT INTO public."order"(id,sender, info, pickup, platitude, plongitude, destination, dlatitude, dlongitude, current, clatitude, clongitude, weight, price, receiver, telephone, status) VALUES (\'1\',\'bobo\',\'laptop\',\'kk78\',\'322\',\'98\',\'326\',\'56\',\'124\',\'34\',\'54\',\'67\',\'78\',\'123\',\'Hariyali\',\'986543457\',\'In Progress\')';
+let psql='INSERT INTO order (id,sender, info, pickup, platitude, plongitude, destination, dlatitude, dlongitude, current, clatitude, clongitude, weight, price, receiver, telephone, status) VALUES (\'1\',\'bobo\',\'laptop\',\'kk78\',\'322\',\'98\',\'326\',\'56\',\'124\',\'34\',\'54\',\'67\',\'78\',\'123\',\'Hariyali\',\'986543457\',\'In Progress\')';
 pool.query(psql, (error, results) => {
                      if (error) {
                             throw error
@@ -21,7 +21,7 @@ pool.query(psql, (error, results) => {
                      console.log("Parcel Created!");
                     }
             });
-psql='INSERT INTO public."user"(id,Name, Sex, Address, Email, Telephone, username, password, Token) VALUES (\'1\',\'Bobo\',\'M\',\'KK12\',\'bobotheavatar@gmail.com\',\'6754345689\',\'bobo\',\'bobo\',\'\')';
+psql='INSERT INTO user (id,Name, Sex, Address, Email, Telephone, username, password, Token) VALUES (\'1\',\'Bobo\',\'M\',\'KK12\',\'bobotheavatar@gmail.com\',\'6754345689\',\'bobo\',\'bobo\',\'\')';
 pool.query(psql, (error, results) => {
                      if (error) {
                             throw error
