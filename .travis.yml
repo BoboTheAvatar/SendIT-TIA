@@ -39,7 +39,7 @@ before_script:
     OWNER = postgres
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;'
-  - psql -c CREATE TABLE public."order"
+  - psql -c 'CREATE TABLE public."order"
     (
     id character(30),
     sender character(20),
@@ -58,7 +58,7 @@ before_script:
     receiver character(20),
     telephone character(15),
     status character(15)
-    );
+    )';
   - psql -c 'CREATE TABLE public."user"
     (
     id integer NOT NULL DEFAULT nextval('"user_Id_seq"'::regclass),
