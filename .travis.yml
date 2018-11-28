@@ -33,7 +33,9 @@ install:
 instrumentation:
     root: src
 
-before_script: 
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  
   - psql -c 'CREATE DATABASE sendit
     WITH 
     OWNER = postgres
@@ -72,6 +74,7 @@ before_script:
     token character(50) COLLATE pg_catalog."default",
     CONSTRAINT user_pkey PRIMARY KEY (id)
     )';
+    
  
 
     
