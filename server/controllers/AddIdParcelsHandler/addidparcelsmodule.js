@@ -23,7 +23,7 @@ export class addidparcelsclass{
                                  });
 
             //const { name, sex, email, telephone, username, password, address } = request.body ;
-            const { token,sender,info,pickup,plat,plong,destination,dlat,dlong,current,clat,clong,weight,price,receiver} = request.body ;
+            const { token,sender,info,pickup,plat,plong,destination,dlat,dlong,current,clat,clong,weight,price,receiver,telephone} = request.body ;
 
             const date = new Date();
             const timestamp = date.getTime();
