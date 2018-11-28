@@ -13,7 +13,13 @@ const pool = new Pool({
 });
 
 
-let psql='CREATE DATABASE sendit';
+let psql='CREATE DATABASE "sendit" WITH'+ 
+    'OWNER = postgres'+ 
+    'ENCODING = \'UTF8\''+ 
+    'LC_COLLATE = \'English_United States.1252\''+ 
+    'LC_CTYPE = \'English_United States.1252\''+ 
+    'TABLESPACE = pg_default'+ 
+    'CONNECTION LIMIT = -1';
 pool.query(psql, (error, results) => {
                      if (error) {
                             throw error
