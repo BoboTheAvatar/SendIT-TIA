@@ -24,12 +24,12 @@ export class locationidparcelsclass{
                                     port: 7777,
                                  });
 
-              
-
+              const{ token, parcelid,lat,long,loc}=request.body;
+              /*
               const parcelid= request.params.Id;
               const lat=request.param('lat');
               const long=request.param('long');
-              const loc=request.param('loc');
+              const loc=request.param('loc');*/
 
               //url example
               //localhost:8080/api/v1/parcels/id3/location?lat=10&long=20&loc=KK10
@@ -43,7 +43,7 @@ export class locationidparcelsclass{
                             throw error
                      }
                      response.setHeader('Content-Type','text/plain');
-                     response.send("Updated!");  
+                     response.send({Message:"Updated",token});  
             });
 
      };

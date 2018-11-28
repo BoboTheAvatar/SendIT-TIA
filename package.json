@@ -11,7 +11,7 @@
     "test1": "./node_modules/.bin/mocha",
     "test2": "nyc --reporter=html --reporter=text jasmine",
     "test3": "mocha-webpack test/api.js",
-    "test4": "babel-node spec/specs",
+    "test4": "jasmine-node spec/unit/api.spec.js",
     "test5": "nyc --reporter=html --reporter=text ./node_modules/.bin/mocha",
     "test-cover": "./node_modules/.bin/istanbul cover --include-all-sources spec/specs.js && istanbul check-coverage -- --require=babel-register",
     "test-cover1": "./node_modules/.bin/istanbul cover --include-all-sources babel-node spec/specs.js -- --require=babel-register",

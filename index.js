@@ -2,7 +2,8 @@ import express from 'express';
 import fs from 'fs';
 //const express = require("express");
 import  bodyParser from 'body-parser';
-import {rootin} from './server/routes/routing.js';
+import router from './server/routes/routing.js';
+//import {rootin} from './server/routes/routing.js';
 
 const app=express();
 
@@ -13,12 +14,16 @@ app.use(
   })
 );
 
-app.use('/api/v1', rootin());
+//console.log(router);
+
+app.use('/api/v1', router.router);
+//app.use('/api/v1', rootin());
+
 
 app.use('/', (req,res)=>{
 
     
-    fs.readFile("Launch.html", function(err, data) {
+    fs.readFile("Launch.html", (err, data) =>{
     if (err) {
       res.writeHead(404, {'Content-Type': 'text/html'});
       return res.end("404 Not Found");

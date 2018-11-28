@@ -19,6 +19,7 @@ describe("Select One ID parcels Test ", () => {
     it("returns the expected result", (done) =>{
       request(url, (error, response, body) =>{
         //expect(body).toBeUndefined();
+        expect(response.body).toEqual("Restricted");
         done();
       });
     });

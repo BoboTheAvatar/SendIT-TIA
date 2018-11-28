@@ -20,15 +20,17 @@ export class deliveredidparcelsclass{
                                     port: 7777,
                                  });
 
-            const parcelid= request.params.Id;
+            //const parcelid= request.params.Id;
+            const{parcelid,token}=request.body;
+
             console.log('UPDATE public."order" SET status=\'Delivered\' WHERE id=\''+parcelid+'\''); 
 
             pool.query('UPDATE public."order" SET status=\'Delivered\' WHERE id=\''+parcelid+'\'', (error, results) => {
                      if (error) {
                             throw error
                      }
-                     response.setHeader('Content-Type','text/plain');
-                     response.send("Updated!");  
+                     //response.setHeader('Content-Type','text/plain');
+                     response.send({Message:"Updated!",token});  
             });
             
 

@@ -21,17 +21,20 @@ export class idparcelsclass{
                                     port: 7777,
                                  });
 
-            const sender="";
-
-            if(request.params.parcelId){ sender=request.params.parcelId;};
+            //const sender= request.params.parcelId;
+            const{id,token}=request.body;
             
-            console.log('SELECT * FROM public."order" WHERE "id"=\''+sender+'\'');
+            console.log('SELECT * FROM public."order" WHERE "id"=\''+id+'\'');
             
-            pool.query('SELECT * FROM public."order" WHERE id=\''+sender+'\'', (error, results) => {
+            pool.query('SELECT * FROM public."order" WHERE id=\''+id+'\'', (error, results) => {
                      if (error) {
                             throw error
                      }
-                     response.status(200).json(results.rows)
+                     else{
+                     let Message=results.rows;
+                     response.setHeader('Content-Type','application/json');
+                     response.send({Message,token});
+                     }
             }); 
             
 

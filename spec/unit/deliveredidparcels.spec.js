@@ -19,6 +19,7 @@ describe("Change status of a ID parcel Test ", () => {
     it("returns the expected result",(done) =>{
       request.put(url, (error, response, body) =>{
         //expect(body).toBeUndefined();
+        expect(response.body).toEqual("Restricted");
         done();
       });
     });

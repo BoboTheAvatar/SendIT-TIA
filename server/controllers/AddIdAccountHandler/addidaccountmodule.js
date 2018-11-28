@@ -22,39 +22,51 @@ export class addidaccountclass{
                                     port: 7777,
                                  });
 
-            const { name, sex, email, telephone, username, password, address } = request.body ;
+            const { token, name, sex, email, telephone, username, password, address } = request.body ;
+            /*
+            let name= request.param('name'); 
+            let sex= request.param('sex');  
+            let email= request.param('email');  
+            let telephone= request.param('telephone');  
+            let username= request.param('username'); 
+            let password= request.param('password'); 
+            let address= request.param('address'); */
 
-            pool.query("SELECT * FROM public.'user' WHERE username='"+username+"'", (error, results) => {
+            pool.query('SELECT * FROM public."user" WHERE username=\''+username+'\'', (error, results) => {
                           if (error) {
                                 throw error
                            }
+
+                           console.log(results.rows);
+                           console.log(results.rows.length);
+
                 
-                           if (results.rows[0].username===username) {
+                           if(results.rows.length>0) {
                                 response.setHeader('Content-Type','text/plain');
                                 response.send("User already Exists. Please change Username."); 
                                 response.end();
 
                            }
+                           else{
 
-            });
+                            const sql='INSERT INTO public."user"(id,Name, Sex, Address, Email, Telephone, username, password, Token) VALUES (DEFAULT,\''+name+'\',\''+sex+'\',\''+address+'\',\''+email+'\',\''+telephone+'\',\''+username+'\',\''+password+'\',\'\')';
+                            
+                            console.log(sql);
 
-
-            const sql="INSERT INTO public.'user'(Id, Name, Sex, Address, Email, Telephone, username, password, Token)"+
-
-            " VALUES ('','"+name+"','"+sex+"','"+address+"','"+email+"','"+telephone+"','"+username+"','"+password+"','0',)";
-
-            const getUsers = (request, response) => {
-                                 pool.query(sql, (error, results) => {
+                            pool.query(sql, (error, results) => {
                                           if (error) {
                                                        throw error
                                                      }
-                                 })
-                             };
+                                          //response.setHeader('Content-Type','text/plain');
+                                          response.send({Message:"Created",token}); 
+                                 });
 
-            response.setHeader('Content-Type','text/plain');
-            response.send("Created!");         
+                            
+                          }       
 	   
 
-   };
+                });
+
+          }
 
 }

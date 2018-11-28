@@ -12,7 +12,7 @@ export class allparcelsclass{
 
       getallparcels(request,response){
 
-		        const pool = new Pool({
+		      const pool = new Pool({
                                     user: 'postgres',
                                     host: 'localhost',
                                     database: 'sendit',
@@ -20,11 +20,19 @@ export class allparcelsclass{
                                     port: 7777,
                                  });
             
+            //console.log("Hey");
+            const {token}=request.body;
+
             pool.query('SELECT * FROM public."order"', (error, results) => {
                      if (error) {
                             throw error
-                     }
-                     response.status(200).json(results.rows)
+                     }else{
+
+                     let Message=results.rows;
+                     response.setHeader('Content-Type','application/json');
+                     response.send({Message,token});
+                     response.end();
+                    }
             });
 
             //response.setHeader('Content-Type','application/json');

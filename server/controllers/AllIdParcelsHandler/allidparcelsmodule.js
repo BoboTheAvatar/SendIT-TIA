@@ -1,12 +1,13 @@
 const Pool = require('pg').Pool;
 import fs from 'fs';
 import  bodyParser from 'body-parser';
+import express from 'express';
 
 export class allidparcelsclass{
 
     constructor(){
 
-            this.tosendflag="true";
+            this.tosendflag=true;
     };
 
     getallidparcels(request,response){
@@ -19,14 +20,22 @@ export class allidparcelsclass{
                                     port: 7777,
                                  });
 
-            const sender= request.params.Id;
-            console.log('SELECT * FROM public."order" WHERE "Sender"=\''+sender+'\'');
+            //const sender= request.params.Id;
+            const {token,id}=request.body;
             
-            pool.query('SELECT * FROM public."order" WHERE Sender=\''+sender+'\'', (error, results) => {
+            console.log('SELECT * FROM public."order" WHERE "Sender"=\''+id+'\'');
+            
+            pool.query('SELECT * FROM public."order" WHERE Sender=\''+id+'\'', (error, results) => {
                      if (error) {
                             throw error
                      }
-                     response.status(200).json(results.rows)
+                     else{
+                        let Message=results.rows;
+                        response.setHeader('Content-Type','application/json');
+                        response.send({Message,token});
+                     }
+            return 0;
+
             }); 
               
             
