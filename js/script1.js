@@ -6,10 +6,10 @@ function initMap() {
            }
 
 function viewdata(a){
-	    var b=a; 
+	    var b=a;
 		
 		
-		var result="<br><table class=\"resulttable\">"
+		var result="<table class=\"resulttable\" style=\"background:#ffffff;\">"
 		
 		    for(x in userjason.username.Orders[b]){
 			    result=result+"<tr><td>"+x+"</td><td>"+userjason.username.Orders[b][x]+"</td></tr>";
@@ -23,7 +23,7 @@ function cancelorder(a){
 	    var b=a;
 		
 		
-		var result="<br><table class=\"resulttable\">"
+		var result="<table class=\"resulttable\" style=\"background:#ffffff;\">"
 		
 		    for(x in userjason.username.Orders[b]){
 			    result=result+"<tr><td>"+x+"</td><td>"+userjason.username.Orders[b][x]+"</td></tr>";

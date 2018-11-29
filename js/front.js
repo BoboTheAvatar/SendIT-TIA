@@ -1,6 +1,6 @@
 const loginform = function loginform(){
 	 
-	    let embededform="<div class=\"col-10 regform \" ><br><form action=\"Profile.html\" method=\"Get\">"+
+	    let embededform="<div class=\"col-10 regform animated pulse \" ><br><form action=\"Profile.html\" method=\"Get\">"+
 		             "<div class=\"col-11 formheader\"><center><h2>Login Form</h2></center></div>"+
                      "<div class=\"col-11\">Username:<br><input type=\"text\" class=\"col-12 inputform\"/></div>"+
                      "<div class=\"col-11\">Password: <br><input type=\"password\" class=\"col-12 inputform\"/></div>"+
@@ -9,15 +9,14 @@ const loginform = function loginform(){
                      "<br>"+
                      "</div>";
 	    
-		 document.getElementById("imagewrapper").style.height="800px"; 
+		 document.getElementById("imagewrapper").style.height="800px";
 		 document.getElementById("imagewrapper").style.transition="1s";
 	     document.getElementById("formreceiver").innerHTML=embededform;
-		 alert("No Need To Enter Data. Just click The Submit Button! Thanks.");
 	 };
 
 const registerform=function registerform(){
 	 
-	    let embededform="<div class=\"col-10 regform\">"+
+	    let embededform="<div class=\"col-10 regform animated pulse \">"+
                     "<br>"+
                     "<form action=\"Profile.html\" method=\"Get\">"+
 					"<div class=\"col-11 formheader\"><center><h2>Signup Form</h2></center></div>"+
@@ -35,5 +34,4 @@ const registerform=function registerform(){
 	     document.getElementById("imagewrapper").style.height="1000px";
 		 document.getElementById("imagewrapper").style.transition="1s";
 	     document.getElementById("formreceiver").innerHTML=embededform;
-		 alert("No Need To Enter Data. Just click The Submit Button! Thanks.");
 	 };

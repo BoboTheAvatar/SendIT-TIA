@@ -10,65 +10,82 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
    <title>SendIT Update</title>
-   <link rel="icon" href="Images/Icon.jpg">
 
    <link href="css/buttons.css" rel="stylesheet">  
    <link href="css/forms.css" rel="stylesheet">    
    <link href="css/images.css" rel="stylesheet">
    <link href="css/tables.css" rel="stylesheet">
-   <link href="css/layout.css" rel="stylesheet">  
+   <link href="css/layout.css" rel="stylesheet"> 
+   <link href="css/update.css" rel="stylesheet">    
    <script src="js/script1.js" type="text/javascript"></script>
-   <script src="js/jsonobject.js" type="text/javascript"></script> 
+   <script src="js/jsonobject.js" type="text/javascript"></script>
    
 </head>
 
 <body>
 
-    <div class="col-12 header">
-        <div class="col-6 headerleft">
-		    <img src="Images/Logo.png" alt="" class="col-2 imagelogo"/>
-		</div>
-		<div class="col-6 headerright">
-		   <table class="col-4 headerright">
-		        <tr>
-				    <td><a href="index.html"><img src="Images/logout.png" alt="" class="socialmediaicon"/></a></td>
-				    <td><img src="Images/facebook.png" alt="" class="socialmediaicon"/></td>
-		            <td><img src="Images/twwtter.png" alt="" class="socialmediaicon"/></td>
-		            <td><img src="Images/linkedin.png" alt="" class="socialmediaicon"/></td>
-				</tr>
-		   </table>
-		</div> 
-    </div>
-	<br><br>
-	<div class="col-12 imagebanner">    
-    </div>
-	
-	<div class="col-12">
+<!-- Beginning Head!-->
+<div class="col-12">
 
-	    <table class="menubanner">
-		     <tr>
-			      <td class="menuitem"><a href="Profile.html">|User Profile</a></td>
+    <div class="col-12"> 
+	      <div class="col-4 head-left">
+              <img src="Images/Logo.png" alt="" class="head-height"/>
+          </div>
+		  
+          <div class="col-2 head-left head-height head-inclinaison-top">
+          </div>
+		  
+          <div class="col-6 head-left head-height head-blue">
+		      <table class="menubanner">
+		        <tr>
+				  <td class="menuitem"><a href="Profile.html">|User Profile</a></td>
 				  <td class="menuitem"><a href="Create.html">|Create Order</a></td>
 				  <td class="menuitem"><a href="View.html">|View Order</td>
 				  <td class="menuitem"><a href="Update.html">|Update Order</td>
-			 </tr>
-		</table>
-		
-	</div>
+				  <td class="menuitem"><a href="Update.html">|Logout</td>
+				</tr>
+		      </table>
+              
+          </div>		  
+    </div>
+	<br><br><br>
+	<div class="col-12 imagebanner">    
+    </div>
 	
-	<br>
+	<div class="col-12"> 
+         <div class="head-left">
+             <table class="menubanner">
+		       <tr>
+			      <td class="head-width-location"><center>| Update Order ></center></td>
+			   </tr>
+		     </table>
+         </div>
+         <div class="col-2 head-height head-inclinaison-bottom head-left">
+         </div>	 
+    </div>
+
+</div>
+<br><br>
+<!-- Ending Head!-->
+
+<center>
+<div class="bodybg">
+<br><br><br>
+<div class="bodywrap">
+<br><br>
+
 	
-	<div class="col-12">
+	<div class="col-11" style="height:500px;">
 	
 	    
 	    <div class="leftdiv">
 		    <h2>List of ordered parcels</h2>
-			<table class="col-12 ">
+			<table class="col-12 resulttable">
 			   <tr><th class="resulttableth">Items</th><th class="resulttableth">View</th><th class="resulttableth">Destination</th><th class="resulttableth">Action</th></tr>
 			   <center>
 			   <script>
 		       for(x in userjason.username.Orders){
-		         document.write("<tr><td>"+x+"</td><td><button id=\""+x+"\" class=\"buttview\" onclick=\"viewdata('"+x+"')\">View</button></td><td><button id=\""+x+"\" class=\"buttupdate\" onclick=\"changedestination('"+x+"')\">Update</button></td><td><button id=\""+x+"\" class=\"buttcancel\" onclick=\"cancelorder('"+x+"')\">Cancel</button></td></tr>");
+		         document.write("<tr><td class=\"resulttablebd\">"+x+"</td><td class=\"resulttablebd\"><button id=\""+x+"\" class=\"buttview\" onclick=\"viewdata('"+x+"')\">View</button></td><td class=\"resulttablebd\"><button id=\""+x+"\" class=\"buttupdate\" onclick=\"changedestination('"+x+"')\">Update</button></td><td class=\"resulttablebd\"><button id=\""+x+"\" class=\"buttcancel\" onclick=\"cancelorder('"+x+"')\">Cancel</button></td></tr>");
 		       }
 		       </script>
 			   </center>
@@ -86,15 +103,82 @@
 		
 	
     </div>
+
+
+	<div>
+	<br><br><br><br>
+	<center><img src="Images/andela.jpg" alt="" class="col-7" style="border-radius:30px;"/></center>
+	</div>
+
+	<br><br>
+</div>
+<br><br><br>
+</div>
+</center>
 	
 	
+<!-- Beginning Tail!-->
+	<br><br>
+
+<div class="col-12 tail-footer">
+<br><br>
+  <center>
+  <div class="col-4 head-left"> 
+	     
+		 <table class="resulttable" border="0">
+				<tr><th class="resulttableth">Author Information</th></td>
+				</tr>
+				<tr><td class="resulttablebd"><center>Bobo BUYA</center></td>
+				</tr>
+				<tr><td class="resulttablebd"><center>Address</center></td>
+				</tr>
+				<tr><td class="resulttablebd"><center>0784838211</center></td>
+				</tr>
+				<tr><td class="resulttablebd"><center>bobo@bobo.com</center></td>
+				</tr>
+			 </table>
 	
+	</div>
+	
+	<div class="col-4 head-left"> 
+	     
+		 <table class="resulttable" border="0">
+				<tr><th class="resulttableth">Author Information</th></td>
+				</tr>
+				<tr><td class="resulttablebd"><center>Bobo BUYA</center></td>
+				</tr>
+				<tr><td class="resulttablebd"><center>Address</center></td>
+				</tr>
+				<tr><td class="resulttablebd"><center>0784838211</center></td>
+				</tr>
+				<tr><td class="resulttablebd"><center>bobo@bobo.com</center></td>
+				</tr>
+			 </table>
+	
+	</div>
+	<div class="col-4 head-left"> 
+	     
+		 <table class="resulttable" border="0">
+				<tr><th class="resulttableth">Author Information</th></td>
+				</tr>
+				<tr><td class="resulttablebd"><center>Bobo BUYA</center></td>
+				</tr>
+				<tr><td class="resulttablebd"><center>Address</center></td>
+				</tr>
+				<tr><td class="resulttablebd"><center>0784838211</center></td>
+				</tr>
+				<tr><td class="resulttablebd"><center>bobo@bobo.com</center></td>
+				</tr>
+			 </table>
+	
+	</div>
+	</center>
+     
+</div>
+<!-- Ending Tail!-->
 
 	
 	
-	<div>
-	<center><img src="Images/Andela.jpg" alt="" class="col-12"/></center>
-	</div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1rfZByQvhADXfm348JTRTyrbMPMtBI40&callback=initMap" async defer></script>
 </body>
 

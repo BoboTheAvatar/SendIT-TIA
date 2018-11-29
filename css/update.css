@@ -1,0 +1,50 @@
+/* CSS Document */
+
+.head-left{
+   float:left;
+}
+.head-height{
+   height:50px;
+}
+.head-inclinaison-top{
+   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+43,ffffff+44,ffffff+44,19547b+45&0+43,1+44,1+100 */
+background: -moz-linear-gradient(-45deg, rgba(255,255,255,0) 43%, rgba(255,255,255,1) 44%, rgba(25,84,123,1) 45%, rgba(25,84,123,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg, rgba(255,255,255,0) 43%,rgba(255,255,255,1) 44%,rgba(25,84,123,1) 45%,rgba(25,84,123,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg, rgba(255,255,255,0) 43%,rgba(255,255,255,1) 44%,rgba(25,84,123,1) 45%,rgba(25,84,123,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#19547b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.head-blue{
+   background-color:#19547b;
+}
+
+.head-inclinaison-bottom{
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#19547b+55,ffffff+56,ffffff+56,ffffff+57&1+0,1+56,0+57 */
+background: -moz-linear-gradient(-45deg, rgba(25,84,123,1) 0%, rgba(25,84,123,1) 55%, rgba(255,255,255,1) 56%, rgba(255,255,255,0) 57%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg, rgba(25,84,123,1) 0%,rgba(25,84,123,1) 55%,rgba(255,255,255,1) 56%,rgba(255,255,255,0) 57%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg, rgba(25,84,123,1) 0%,rgba(25,84,123,1) 55%,rgba(255,255,255,1) 56%,rgba(255,255,255,0) 57%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#19547b', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.head-width-location{
+    width: 150px;
+}
+.tail-footer{
+    height:170px; 
+	background-color:#154677;
+	opacity:0.8;
+}
+
+.bodybg{
+        width:90%; 
+	background-image: url('../Images/world1.png'); 
+	border-radius: 10px; 
+}
+.bodywrap{
+        width:100%; 
+	background-color: #c8c8c8; 
+	border-radius: 10px; 
+        opacity: 0.8;
+}
+.andelaimage{
+    border-radius:30px;
+}

@@ -5,7 +5,7 @@ let userjason ={};
 		    "Name":"Bobo BUYA",
 			"Address":"Kn 12",
 			"Email":"b@gmail.com",
-			"Telephone":"0987654321", 
+			"Telephone":"0987654321",
 			"Username":"bobobuya",
 			"Password":"1234",
 			"Orders":{

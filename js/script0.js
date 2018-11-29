@@ -1,6 +1,6 @@
 
 	function viewdataadmin(a){
-	    var b=a; 
+	    var b=a;
 		
 		
 		var result="<br><table class=\"resulttable\">"
