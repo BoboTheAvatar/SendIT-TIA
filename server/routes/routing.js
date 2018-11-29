@@ -1,4 +1,5 @@
 import express from 'express'; 
+import fs from 'fs';
 const router = express.Router();
 
 import * as AllParcelsApi from '../controllers/AllParcelsHandler/allparcelsmodule';
@@ -74,8 +75,9 @@ function checkToken(req, res, next){
     } else {
         //If header is undefined return Forbidden (403)
         //res.sendStatus(403)
+        
         res.setHeader('Content-Type','text/plain');
-        res.status(403);
         res.send("Restricted");
+        
     }
 };

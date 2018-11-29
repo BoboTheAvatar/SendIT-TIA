@@ -1,6 +1,7 @@
 import fs from 'fs';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import Joi from 'joi';
 const Pool = require('pg').Pool;
 
 dotenv.config();
@@ -24,30 +25,39 @@ export class addidaccountclass{
                                     port: process.env.DB_PORT
                                  });
 
-            const { token, name, sex, email, telephone, username, password, address } = request.body ;
-            /*
-            let name= request.param('name'); 
-            let sex= request.param('sex');  
-            let email= request.param('email');  
-            let telephone= request.param('telephone');  
-            let username= request.param('username'); 
-            let password= request.param('password'); 
-            let address= request.param('address'); */
+            const schema = Joi.object().keys({
+                                name: Joi.string().min(2).max(10).required().error(new Error('Your name is not in the right format.')),
+                                sex: Joi.string().min(1).max(6),
+                                username: Joi.string().alphanum().min(3).max(30).required().error(new Error('Please modify your username.')),
+                                password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required().error(new Error('Please, your password must be alphanumeric.')),
+                                telephone: Joi.string().regex(/^\d{3}-\d{3}-\d{4}$/).required().error(new Error('Please your telephone is not in the format XXX-XXX-XXXX.')),
+                                email: Joi.string().email({ minDomainAtoms: 2 }).error(new Error('Please, your email is not right.')),
+                                address: Joi.string().alphanum().min(3).max(30)
+                            });
 
-            pool.query('SELECT * FROM public."user" WHERE username=\''+username+'\'', (error, results) => {
+            const {name, sex, email, telephone, username, password, address } = request.body ;
+
+
+            const resultvalidation = Joi.validate({ name, sex, email, telephone, username, password, address }, schema);
+
+            if(resultvalidation.error!==null){
+                      console.log(resultvalidation);
+                      response.send({message: resultvalidation.error.message});
+                      response.end();
+            }
+            else{
+
+            pool.query('SELECT * FROM public."user" WHERE username=\''+username+'\' OR email=\''+email+'\'', (error, results) => {
                           if (error) {
-                                throw error
+                                console.log(error);
+                                response.send({message: "Server down. Please try later."});
+                                throw error;
                            }
 
-                           console.log(results.rows);
-                           console.log(results.rows.length);
+                           else if(results.rows.length>0) {
 
-                
-                           if(results.rows.length>0) {
-                                response.setHeader('Content-Type','text/plain');
-                                response.send("User already Exists. Please change Username."); 
+                                response.send({message:"Credentials already Exists."}); 
                                 response.end();
-
                            }
                            else{
 
@@ -57,10 +67,15 @@ export class addidaccountclass{
 
                             pool.query(sql, (error, results) => {
                                           if (error) {
-                                                       throw error
+                                                       console.log(error);
+                                                       response.send({message: "Server down. Please try later."});
+                                                       throw error;
                                                      }
+                                          else
+                                          {
                                           //response.setHeader('Content-Type','text/plain');
-                                          response.send({Message:"Created",token}); 
+                                          response.send({Message:"User Created"}); 
+                                          }
                                  });
 
                             
@@ -68,6 +83,8 @@ export class addidaccountclass{
 	   
 
                 });
+
+              }
 
           }
 

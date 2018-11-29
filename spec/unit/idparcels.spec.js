@@ -11,7 +11,7 @@ describe("Select One ID parcels Test ", () => {
     it("returns status 200", (done) =>{
       request(url, (error, response, body) =>{
         //expect(response.statusCode).toBeUndefined();
-        expect(response.statusCode).toEqual(403);
+        expect(response.statusCode).toEqual(200);
         done();
       });
     });

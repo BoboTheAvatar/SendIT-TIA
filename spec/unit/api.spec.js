@@ -48,6 +48,8 @@ const response={
   setHeader(){
   },
   send(){
+  },
+  end(){
   }
 };
 

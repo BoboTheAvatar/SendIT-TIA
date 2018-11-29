@@ -1,5 +1,7 @@
-import fs from 'fs';
+
 import  bodyParser from 'body-parser';
+import nodemailer from 'nodemailer';
+import jwt from 'jsonwebtoken';
 const Pool = require('pg').Pool;
 
 export class locationidparcelsclass{
@@ -13,39 +15,88 @@ export class locationidparcelsclass{
 
     locationidparcels(request,response){
               
-              //Entered new location and price
-              //const enteredprice=126, enteredlocation="KL 123", filedata={};
+
 
               const pool = new Pool({
-                                    user: 'postgres',
-                                    host: 'localhost',
-                                    database: 'sendit',
-                                    password: '1234',
-                                    port: 7777,
-                                 });
+                user: process.env.DB_USER,
+                host: process.env.DB_HOST,
+                database: process.env.DB_NAME,
+                password: process.env.DB_PASS,
+                port: process.env.DB_PORT
+              });
 
-              const{ token, parcelid,lat,long,loc}=request.body;
-              /*
-              const parcelid= request.params.Id;
-              const lat=request.param('lat');
-              const long=request.param('long');
-              const loc=request.param('loc');*/
+              const{ token, parcelid, lat, long, loc, sender, username }=request.body;
 
-              //url example
-              //localhost:8080/api/v1/parcels/id3/location?lat=10&long=20&loc=KK10
+              let emailuser="";
+              let user="";
+              
 
-              //const {long,loc}= request.body;
+        jwt.verify(request.token, 'privatekey', (err, authorizedData) => {
+            if(err){
+
+                response.send({token, message: "Your token has a problem.", username});
+                response.end(); 
+            }
+            else
+            {
+              
+
+              pool.query('Select * from public."user" WHERE username=\''+sender+'\'', (error, results) => {
+                     if (error) {
+                            console.log(error);
+                            response.send({token, message: "Server down. Please try later.", username});
+                            throw error;
+                     }
+                     else{
+                        emailuser=results.rows[0].email;
+                        user=results.rows[0].name;
+                        console.log(emailuser);
+                     }
+              });
 
               console.log('UPDATE public."order" SET current=\''+loc+'\', clatitude=\''+lat+'\' clongitude=\''+long+'\' WHERE id=\''+parcelid+'\''); 
 
-            pool.query('UPDATE public."order" SET current=\''+loc+'\', clatitude=\''+lat+'\', clongitude=\''+long+'\' WHERE id=\''+parcelid+'\'', (error, results) => {
+              pool.query('UPDATE public."order" SET current=\''+loc+'\', clatitude=\''+lat+'\', clongitude=\''+long+'\' WHERE id=\''+parcelid+'\'', (error, results) => {
                      if (error) {
-                            throw error
+                            console.log(error);
+                            response.send({token, message: "Server down. Please try later.", username});
+                            throw error;
                      }
-                     response.setHeader('Content-Type','text/plain');
-                     response.send({Message:"Updated",token});  
+                     else{
+
+                        /*
+                        var transporter = nodemailer.createTransport({
+                                                    service: 'gmail',
+                                                    auth: {
+                                                           user: 'bobotheavatar@gmail.com',
+                                                           pass: '123456789'
+                                                    }
+                                          });
+
+                        var mailOptions = {
+                                           from: 'bobotheavatar@gmail.com',
+                                           to: emailuser,
+                                           subject: 'Current Parcel Location',
+                                           text: 'Hello'+user+'!'
+                                          };
+
+                        transporter.sendMail(mailOptions, function(error, info){
+                                          if (error) {
+                                                  console.log(error);
+                                          } else {
+                                                  console.log('Email sent: ' + info.response);
+                                          }
+                        });
+                         */
+
+                        response.send({token, message: "Location Updated To "+loc+"", username});  
+                     }
             });
 
-     };
+            }
+
+        });
+
+      }
 }
 

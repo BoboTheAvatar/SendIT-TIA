@@ -1,4 +1,4 @@
-import fs from 'fs';
+
 import bodyParser from 'body-parser';
 import jwt from 'jsonwebtoken';
 
@@ -17,12 +17,12 @@ export class loginclass{
     login(request,response){
 
             const pool = new Pool({
-                                    user: 'postgres',
-                                    host: 'localhost',
-                                    database: 'sendit',
-                                    password: '1234',
-                                    port: 7777,
-                                 });
+                user: process.env.DB_USER,
+                host: process.env.DB_HOST,
+                database: process.env.DB_NAME,
+                password: process.env.DB_PASS,
+                port: process.env.DB_PORT
+            });
 
 
 
@@ -36,33 +36,29 @@ export class loginclass{
 
             pool.query('SELECT * FROM public."user" WHERE username=\''+username+'\' AND password=\''+password+'\'', (error, results) => {
                           if (error) {
-                                throw error
-                           }
+                                console.log(error);
+                                response.send({token:"xxx", message:"Server down. Please try again later.", username});
+                                response.end();
 
-                           console.log(results.rows[0].username);
-                           console.log(typeof username);
-                           console.log(typeof results.rows[0].username);
-                
-                           if (results.rows[0].username.trim()!==username && results.rows[0].password.trim()!==password) {
-                                response.setHeader('Content-Type','text/plain');
-                                response.send("Unable to Login"); 
+                           }
+                           //console.log(results.rows[0].username);
+
+                           if(results.rows[0]===undefined){
+                                response.send({token:"xxx", message:"Cannot find User '"+username+"' using entered credentials.", username});
+                                response.end();
+                           }
+                           else if(results.rows[0].username.trim()!==username && results.rows[0].password.trim()!==password) {
+                                response.send({token:"xxx", message:"Unable to login User: "+username, username});
                                 response.end();
 
                            }
                            else{
-                                //response.setHeader('Content-Type','text/plain');
-                                //response.send("Logged in with ");
-                                //}
-                           
 
-                          jwt.sign( results.rows[0], 'privatekey', { expiresIn: '1h' },(err, token) => {
-                                  
-                                  if(err) { console.log(err); }    
-                                  //res.send(token);
-                                  //response.setHeader('Content-Type','Application/json');
-                                  //response.send("Logged in with "+token);
-                                  response.setHeader('authorization',token);
-                                  response.send({token, message: "Logged In", username});
+                          jwt.sign( {username: results.rows[0].username}, 'privatekey', { expiresIn: '2h' },(err, token) => {
+                                if(err) { console.log(err); }    
+                                response.setHeader('authorization',token);
+                                response.send({token, message: username+" Logged In", username});
+                                response.end();
                            });
                         }
                            
