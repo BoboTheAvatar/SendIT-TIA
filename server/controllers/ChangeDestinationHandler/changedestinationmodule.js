@@ -39,7 +39,7 @@ export class changedestinationclass{
         jwt.verify(request.token, 'privatekey', (err, authorizedData) => { 
             if(err){
 
-                response.send({token, message: "Your token has a problem.", username});
+                response..status(400)send({token, message: "Your token has a problem.", username});
                 response.end(); 
             }
             else
@@ -50,12 +50,12 @@ export class changedestinationclass{
                pool.query('UPDATE public."order" SET price=\''+price+'\', destination=\''+loc+'\', dlatitude=\''+lat+'\', dlongitude=\''+long+'\' WHERE id=\''+parcelid+'\'', (error, results) => {
                      if (error) {
                             console.log(error);
-                            response.send({token, message: "Server down. Please try later.", username});
+                            response.status(500).send({token, message: "Server down. Please try later.", username});
                             throw error;
                      }
                      else
                      {
-                     response.send({token, message: "Destination Updated To "+loc+"", username});  
+                     response.status(202).send({token, message: "Destination Updated To "+loc+"", username});  
                      }
                });      
             }

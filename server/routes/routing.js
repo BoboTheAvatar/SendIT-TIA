@@ -77,7 +77,7 @@ function checkToken(req, res, next){
         //res.sendStatus(403)
         
         res.setHeader('Content-Type','text/plain');
-        res.send("Restricted");
+        res.status(403).send("Restricted");
         
     }
 };

@@ -35,14 +35,14 @@ export class addidaccountclass{
                                 address: Joi.string().alphanum().min(3).max(30)
                             });
 
-            const {name, sex, email, telephone, username, password, address } = request.body ;
+            const {id ,name, sex, email, telephone, username, password, address } = request.body ;
 
 
             const resultvalidation = Joi.validate({ name, sex, email, telephone, username, password, address }, schema);
 
             if(resultvalidation.error!==null){
                       console.log(resultvalidation);
-                      response.send({message: resultvalidation.error.message});
+                      response.status(400).send({message: resultvalidation.error.message});
                       response.end();
             }
             else{
@@ -50,18 +50,18 @@ export class addidaccountclass{
             pool.query('SELECT * FROM public."user" WHERE username=\''+username+'\' OR email=\''+email+'\'', (error, results) => {
                           if (error) {
                                 console.log(error);
-                                response.send({message: "Server down. Please try later."});
+                                response.status(500).send({message: "Server down. Please try later."});
                                 throw error;
                            }
 
                            else if(results.rows.length>0) {
 
-                                response.send({message:"Credentials already Exists."}); 
+                                response.status(401).send({message:"Credentials already Exists."}); 
                                 response.end();
                            }
                            else{
 
-                            const sql='INSERT INTO public."user"(id,Name, Sex, Address, Email, Telephone, username, password, Token) VALUES (DEFAULT,\''+name+'\',\''+sex+'\',\''+address+'\',\''+email+'\',\''+telephone+'\',\''+username+'\',\''+password+'\',\'\')';
+                            const sql='INSERT INTO public."user"(id,Name, Sex, Address, Email, Telephone, username, password, Token) VALUES (\''+id+'\',\''+name+'\',\''+sex+'\',\''+address+'\',\''+email+'\',\''+telephone+'\',\''+username+'\',\''+password+'\',\'\')';
                             
                             console.log(sql);
 
@@ -74,7 +74,7 @@ export class addidaccountclass{
                                           else
                                           {
                                           //response.setHeader('Content-Type','text/plain');
-                                          response.send({Message:"User Created"}); 
+                                          response.status(201).send({Message:"User Created"}); 
                                           }
                                  });
 

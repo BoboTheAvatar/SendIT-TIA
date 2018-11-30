@@ -27,7 +27,7 @@ export class allidparcelsclass{
 
             if(err){
 
-                response.send({token, message: "Your token has a problem.", username});
+                response.status(400).send({token, message: "Your token has a problem.", username});
                 response.end(); 
             }
             else
@@ -38,7 +38,7 @@ export class allidparcelsclass{
             pool.query('SELECT * FROM public."order" WHERE Sender=\''+username+'\'', (error, results) => {
                      if (error) {
                             console.log(error);
-                            response.send({token, message: "Server down. Please try later.", username});
+                            response.status(500).send({token, message: "Server down. Please try later.", username});
                             throw error;
                      }
                      else{

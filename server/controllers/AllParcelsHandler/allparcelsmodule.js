@@ -30,7 +30,7 @@ export class allparcelsclass{
 
             if(err){
 
-                response.send({token, message: "Your token has a problem.", username});
+                response.status(400).send({token, message: "Your token has a problem.", username});
                 response.end(); 
             }
             else
@@ -41,13 +41,13 @@ export class allparcelsclass{
             pool.query('SELECT * FROM public."order"', (error, results) => {
                      if (error) {
                             console.log(error);
-                            response.send({token, message: "Server down. Please try later.", username});
+                            response.status(500).send({token, message: "Server down. Please try later.", username});
                             throw error;
                      }else{
 
                      let data=results.rows;
                      response.setHeader('Content-Type','application/json');
-                     response.send({token, message: "Parcels from All Users", data, username});
+                     response.status(200).send({token, message: "Parcels from All Users", data, username});
                      response.end();
                     }
             });

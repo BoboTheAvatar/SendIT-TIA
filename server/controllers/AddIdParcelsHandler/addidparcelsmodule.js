@@ -32,7 +32,7 @@ export class addidparcelsclass{
             
               if(err){
 
-                response.send({token, message: "Your token has a problem.", username});
+                response.status(400).send({token, message: "Your token has a problem.", username});
                 response.end(); 
                }
                else
@@ -85,12 +85,12 @@ export class addidparcelsclass{
             pool.query(sql, (error, results) => {
                             if (error) {
                                           console.log(error);
-                                          response.send({token, message: "Server down. Please try later.", username});
+                                          response.status(500).send({token, message: "Server down. Please try later.", username});
                                           throw error;
                             }
                             else{
                             //response.setHeader('Content-Type','text/plain');
-                            response.send({token, message: "Parcels Created with Identification: "+id, username});
+                            response.status(201).send({token, message: "Parcels Created with Identification: "+id, username});
                             }
 
                       }); 

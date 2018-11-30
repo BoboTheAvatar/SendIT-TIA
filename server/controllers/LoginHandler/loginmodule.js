@@ -37,18 +37,18 @@ export class loginclass{
             pool.query('SELECT * FROM public."user" WHERE username=\''+username+'\' AND password=\''+password+'\'', (error, results) => {
                           if (error) {
                                 console.log(error);
-                                response.send({token:"xxx", message:"Server down. Please try again later.", username});
+                                response.status(500).send({token:"xxx", message:"Server down. Please try again later.", username});
                                 response.end();
 
                            }
                            //console.log(results.rows[0].username);
 
                            if(results.rows[0]===undefined){
-                                response.send({token:"xxx", message:"Cannot find User '"+username+"' using entered credentials.", username});
+                                response.status(404).send({token:"xxx", message:"Cannot find User '"+username+"' using entered credentials.", username});
                                 response.end();
                            }
                            else if(results.rows[0].username.trim()!==username && results.rows[0].password.trim()!==password) {
-                                response.send({token:"xxx", message:"Unable to login User: "+username, username});
+                                response.status(403).send({token:"xxx", message:"Unable to login User: "+username, username});
                                 response.end();
 
                            }

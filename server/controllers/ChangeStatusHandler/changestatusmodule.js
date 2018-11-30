@@ -34,7 +34,7 @@ export class changestatusclass{
            jwt.verify(request.token, 'privatekey', (err, authorizedData) => { 
             if(err){
 
-                response.send({token, message: "Your token has a problem.", username});
+                response.status(400).send({token, message: "Your token has a problem.", username});
                 response.end(); 
             }
             else
@@ -43,13 +43,13 @@ export class changestatusclass{
             pool.query("UPDATE public.\"order\" SET status ='"+status+"' WHERE id ='"+parcelid+"'", (error, results) => {
                           if (error) {
                                 console.log(error);
-                                response.send({token, message: "Server down. Please try later.", username});
+                                response.status(500).send({token, message: "Server down. Please try later.", username});
                                 throw error;
                            }
                            else
                            {
                                 
-                                response.send({token, message: "Parcel Status Updated To "+status+"", username}); 
+                                response.status(202).send({token, message: "Parcel Status Updated To "+status+"", username}); 
                            }
 
             });  
