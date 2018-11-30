@@ -39,7 +39,7 @@ export class changedestinationclass{
         jwt.verify(request.token, 'privatekey', (err, authorizedData) => { 
             if(err){
 
-                response..status(400)send({token, message: "Your token has a problem.", username});
+                response.status(400).send({token, message: "Your token has a problem.", username});
                 response.end(); 
             }
             else
